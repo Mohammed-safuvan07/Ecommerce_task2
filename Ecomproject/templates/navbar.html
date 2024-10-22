@@ -32,9 +32,10 @@
 
           </ul>
         </li>
-<!--        <li class="nav-item">-->
+        <li class="nav-item">
 <!--          <a class="nav-link disabled" aria-disabled="true">Disabled</a>-->
-<!--        </li>-->
+          <a class="navbar-brand btn btn-danger" href="{% url 'cart:cart_detail' %}">Cart</a>
+        </li>
       </ul>
       <form class="d-flex" role="search" action="{% url 'searchapp:searchresult' %}" method="get">
         {% csrf_token %}

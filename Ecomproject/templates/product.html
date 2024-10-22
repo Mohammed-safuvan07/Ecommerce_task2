@@ -6,20 +6,25 @@
 <!--    <a href="{% url 'Ecomapp:AllProdCat' %}">All Products</a> <br>-->
 <!--    <a href="{{ product.category.get_url}}">{{product.category}}</a>-->
 <!--</div>-->
-<div>
-    <div>
-        <img src="{{product.image.url}}" alt="{{product.name}}">
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+
+                    <div style="text-align:center;">
+                        <img  src="{{product.image.url}}" alt="{{product.name}}">
+                    </div>
+
+                <div>
+                    <h2 style="text-align:center;">{{product.name}}</h2>
+                    <p style="text-align:center;">${{product.price}}</p>
+                    <p>{{product.desc}}</p>
+                    {% if product.stock <= 0 %}
+                    <p><b>Out of Stock</b></p>
+                    {% else %}
+                    <a class="btn btn-success" href="{% url 'cart:add_cart' product.id %}">Add to Cart</a>
+                    {% endif %}
+                </div>
+        </div>
     </div>
 </div>
-<div>
-    <h2>{{product.name}}</h2>
-    <p>${{product.price}}</p>
-    <p>{{product.desc}}</p>
-    {% if product.stock <= 0 %}
-    <p><b>Out of Stock</b></p>
-    {% else %}
-    <a class="btn btn-success" href="{% url 'cart:add_cart' product.id %}">Add to Cart</a>
-    {% endif %}
-</div>
-
 {% endblock %}
